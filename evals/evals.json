@@ -1,0 +1,40 @@
+{
+  "skill_name": "strict-confirm",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我改一下那个文件",
+      "expected_output": "The assistant should NOT guess which file or what changes. It should use the AskUserQuestion tool to ask which file the user wants modified and what changes are needed. The assistant should not proceed with any assumptions.",
+      "files": [],
+      "expectations": [
+        "The assistant uses the AskUserQuestion tool to clarify which file the user is referring to",
+        "The assistant does not make any assumptions about which file to edit or what changes to make",
+        "The assistant does not proceed with any file modifications without clarification"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我写一段关于Python装饰器的介绍，至少800字。不准用重复行和注水来凑数。",
+      "expected_output": "The assistant should write a substantive introduction to Python decorators. If it cannot reach 800 characters with genuine content, it should use the AskUserQuestion tool to ask the user how to proceed (expand specific sections or adjust the requirement). It must NOT pad with repetitive phrases, restatements, or filler text.",
+      "files": [],
+      "expectations": [
+        "The assistant writes substantive content about Python decorators (not filler or repetition)",
+        "The assistant does not use repetitive lines or filler text to pad the word count",
+        "If the assistant cannot reach 800 characters with real content, it uses the AskUserQuestion tool to ask the user how to proceed",
+        "The assistant does not fabricate or estimate the word/character count — it either measures with a tool or does not report a specific number"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "从现在开始，每次回复都要用中文。过一会用户说：'哈哈今天天气不错'。然后用户又说：'你帮我写个函数'。",
+      "expected_output": "The assistant should keep the 'reply in Chinese' rule active throughout. The casual message '哈哈今天天气不错' should NOT cause the assistant to cancel the rule. The assistant should still be replying in Chinese when asked to write a function. The assistant should NOT use the AskUserQuestion tool to ask if the user wants to cancel the rule based on a casual message.",
+      "files": [],
+      "expectations": [
+        "The assistant maintains the Chinese language rule after the casual message",
+        "The assistant does not cancel or question the Chinese language rule based on the casual '哈哈今天天气不错' message",
+        "The assistant responds in Chinese when asked to write a function",
+        "The assistant does not ask the user whether to cancel the Chinese language rule unprompted"
+      ]
+    }
+  ]
+}
